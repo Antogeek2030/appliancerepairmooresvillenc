@@ -1,0 +1,93 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig, areas, services } from "../../data/site";
+
+export function getStaticPaths() {
+  return areas.map((area) => ({
+    params: { slug: area.slug },
+    props: { area },
+  }));
+}
+
+const { area } = Astro.props;
+
+const areaIntros: Record<string, string> = {
+  mooresville: "Mooresville is our home base. Whether you're near downtown, the lake, or the growing residential neighborhoods, we provide prompt appliance repair for refrigerators, laundry pairs, dishwashers, cooking appliances, and more.",
+  huntersville: "Huntersville residents rely on working appliances every day. We offer the same clear communication and careful work for homes throughout Huntersville and its surrounding neighborhoods.",
+  davidson: "From college-town streets to quieter residential areas, Davidson homeowners can count on practical appliance repair without the runaround.",
+  cornelius: "Cornelius sits right on Lake Norman and has a mix of established and newer homes. We serve the community with reliable diagnostics and repairs.",
+  concord: "Concord and nearby neighborhoods are within our regular service radius. We handle common household appliance issues with straightforward service.",
+  kannapolis: "Kannapolis families and businesses can schedule appliance repair with a local team that explains options clearly and respects your time.",
+  "charlotte-north": "Northern Charlotte neighborhoods and adjacent suburbs are part of the area we cover. Call to confirm availability for your specific address.",
+  "lake-norman": "The broader Lake Norman region includes many communities we visit regularly. If you're near the water or in one of the surrounding towns, reach out to see how we can help.",
+};
+
+const intro = areaIntros[area.slug] || area.shortDesc;
+---
+
+<BaseLayout
+  title={`Appliance Repair in ${area.name} | Mooresville NC Service`}
+  description={`Appliance repair in ${area.name}, NC. Refrigerators, washers, dryers, dishwashers, ovens, and more. Local service from Mooresville. Call ${siteConfig.phoneDisplay}.`}
+>
+  <section class="bg-primary-700 text-white py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="text-sm text-primary-200 mb-4" aria-label="Breadcrumb">
+        <ol class="flex flex-wrap items-center gap-2">
+          <li><a href="/" class="hover:text-white">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="/service-areas/" class="hover:text-white">Service Areas</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-white" aria-current="page">{area.name}</li>
+        </ol>
+      </nav>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">Appliance Repair in {area.name}</h1>
+      <p class="text-lg text-primary-100 max-w-2xl">{area.shortDesc}</p>
+      <div class="mt-8">
+        <a href={`tel:${siteConfig.phone}`} class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary-700 font-bold rounded-lg hover:bg-primary-50">
+          Call {siteConfig.phoneDisplay}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 lg:py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Serving {area.name}</h2>
+      <p class="text-lg text-gray-700 leading-relaxed mb-6">{intro}</p>
+      <p class="text-gray-600 leading-relaxed">
+        From our base in Mooresville we travel to {area.name} for residential and light-commercial appliance needs. Most visits begin with a clear conversation about symptoms so we can prepare the right tools and parts awareness for the job.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Common Services in {area.name}</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {services.slice(0, 9).map((s) => (
+          <a href={`/services/${s.slug}/`} class="block p-4 bg-white border border-gray-200 rounded-lg hover:border-primary-300 transition-colors">
+            <span class="font-medium text-gray-900">{s.name}</span>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <a href="/services/" class="text-primary-600 font-semibold hover:underline">View all services →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 lg:py-16 bg-primary-700 text-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4">Need Appliance Help in {area.name}?</h2>
+      <p class="text-primary-100 mb-8">Call or send a message. We'll confirm availability and next steps.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`tel:${siteConfig.phone}`} class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary-700 font-bold rounded-xl hover:bg-primary-50">
+          Call {siteConfig.phoneDisplay}
+        </a>
+        <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10">
+          Contact Form
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

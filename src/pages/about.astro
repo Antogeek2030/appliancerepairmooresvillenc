@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig } from "../data/site";
+---
+
+<BaseLayout
+  title="About Us | Appliance Repair Mooresville NC"
+  description="Learn about our local appliance repair approach in Mooresville, NC. Friendly service, clear communication, and practical repairs for homes around Lake Norman."
+>
+  <section class="bg-primary-700 text-white py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">About Appliance Repair Mooresville NC</h1>
+      <p class="text-lg text-primary-100 max-w-2xl">
+        Local service focused on solving everyday appliance problems with honesty and care.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12 lg:py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg prose-gray">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Our Approach</h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        Appliances are part of daily life. When one stops working, the priority is getting a clear diagnosis and a practical path forward — whether that means a repair, a temporary workaround, or an informed decision about replacement.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        We serve Mooresville and nearby communities around Lake Norman. Our goal on every visit is straightforward communication: what we found, what it means, and what the realistic options look like. No pressure tactics, no mystery fees after the fact.
+      </p>
+
+      <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-10">What We Work On</h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        Most residential refrigerators, washers, dryers, dishwashers, ranges, ovens, microwaves, and related kitchen and laundry appliances. We also help with some light-commercial equipment when the issue is within our scope. If a unit is specialized or very old, we'll let you know early whether we can help effectively.
+      </p>
+
+      <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-10">Serving the Local Community</h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        Being based in Mooresville means we understand the area's mix of established neighborhoods, newer developments, and lake-oriented homes. Travel times are reasonable for most nearby towns, which helps with scheduling and follow-up when parts are needed.
+      </p>
+
+      <h2 class="text-2xl font-bold text-gray-900 mb-4 mt-10">Get in Touch</h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        The best way to start is a phone call or a short message describing the appliance and the symptoms. We'll respond with next steps and scheduling options.
+      </p>
+      <div class="not-prose mt-8 flex flex-col sm:flex-row gap-4">
+        <a href={`tel:${siteConfig.phone}`} class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700">
+          Call {siteConfig.phoneDisplay}
+        </a>
+        <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50">
+          Contact Form
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

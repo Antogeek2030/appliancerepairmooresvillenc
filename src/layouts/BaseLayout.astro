@@ -1,0 +1,91 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Seo from "../components/Seo.astro";
+import "../styles/global.css";
+import { siteConfig } from "../data/site";
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  noindex?: boolean;
+  type?: string;
+}
+
+const { title, description, canonical, ogImage, noindex, type } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <Seo title={title} description={description} canonical={canonical} ogImage={ogImage} noindex={noindex} type={type} />
+    
+    <!-- JSON-LD LocalBusiness -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": siteConfig.name,
+      "image": "https://appliancerepairmooresvillenc.us/og-default.jpg",
+      "telephone": siteConfig.phone,
+      "email": siteConfig.email,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": siteConfig.address.street,
+        "addressLocality": siteConfig.address.city,
+        "addressRegion": siteConfig.address.state,
+        "postalCode": siteConfig.address.zip,
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": siteConfig.geo.lat,
+        "longitude": siteConfig.geo.lng
+      },
+      "url": siteConfig.url,
+      "priceRange": "$$",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": siteConfig.geo.lat,
+          "longitude": siteConfig.geo.lng
+        },
+        "geoRadius": "40000"
+      }
+    })} />
+  </head>
+  <body class="min-h-screen flex flex-col bg-white">
+    <Header />
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- Sticky mobile click-to-call -->
+    <a
+      href={`tel:${siteConfig.phone}`}
+      class="fixed bottom-4 right-4 z-50 flex items-center gap-2 px-5 py-3 bg-primary-600 text-white font-semibold rounded-full shadow-lg hover:bg-primary-700 transition-colors lg:hidden"
+      aria-label={`Call us at ${siteConfig.phoneDisplay}`}
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+      </svg>
+      Call Now
+    </a>
+  </body>
+</html>

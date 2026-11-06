@@ -1,0 +1,183 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig, services } from "../../data/site";
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+
+// Unique intro content based on slug for originality
+const intros: Record<string, string> = {
+  "refrigerator-repair": "A refrigerator that isn't cooling properly can quickly put food at risk. We diagnose temperature, compressor, evaporator, and control issues for most major brands so your fridge can get back to keeping groceries safe.",
+  "washer-repair": "When your washer stops spinning, drains slowly, or leaves clothes soaked, laundry piles up fast. We troubleshoot motors, pumps, sensors, and door locks to restore reliable wash cycles.",
+  "dryer-repair": "Clothes that stay damp or a dryer that overheats are more than inconvenient. We inspect heating elements, thermostats, vents, and drums to get drying performance back on track.",
+  "dishwasher-repair": "Dishes that come out dirty or a dishwasher that won't drain or start can disrupt kitchen routines. We address spray arms, pumps, heaters, and control boards common to modern units.",
+  "oven-repair": "Uneven baking, error codes, or an oven that won't heat evenly make cooking frustrating. We work on heating elements, temperature sensors, igniters, and control systems.",
+  "stove-repair": "Burners that won't light, uneven heat, or control issues on a range or cooktop affect everyday meals. We service gas and electric models with attention to safety.",
+  "microwave-repair": "Microwaves that don't heat, have door problems, or display error codes can often be restored. We evaluate magnetrons, door switches, turntables, and control panels.",
+  "freezer-repair": "A freezer that warms up risks spoilage. We diagnose sealed systems, defrost components, fans, and thermostats to restore proper freezing temperatures.",
+  "ice-maker-repair": "An ice maker that produces little or no ice is a common complaint. We clear clogs, replace failed modules, and address water supply and temperature-related causes.",
+  "garbage-disposal-repair": "Jams, leaks, or a disposal that won't run can be fixed safely. We free stuck grinders, replace failed components, and check electrical and plumbing connections.",
+  "cooktop-repair": "Electric radiant, induction, or gas cooktops that lose heat or have unresponsive controls need careful diagnosis. We service elements, sensors, and ignition systems.",
+  "range-hood-repair": "Poor ventilation or non-working lights and fans reduce kitchen comfort. We repair motors, switches, filters, and lighting in range hoods.",
+  "wine-cooler-repair": "Wine coolers need stable temperatures. We address compressor, thermostat, and sealing issues that affect storage conditions.",
+  "wall-oven-repair": "Built-in wall ovens present unique access and calibration needs. We restore heating performance and resolve error codes on common residential models.",
+  "trash-compactor-repair": "A stuck or noisy trash compactor can be restored. We service motors, switches, and ram mechanisms to keep the unit functional.",
+  "commercial-appliance-repair": "Restaurants and businesses rely on working kitchen equipment. We provide practical repair support for light-commercial refrigeration, cooking, and dishwashing equipment.",
+  "ice-machine-repair": "Ice machines in homes or businesses that slow down or stop need timely attention. We clean, diagnose, and repair components that affect production.",
+  "appliance-installation": "Proper installation protects your investment and ensures safe operation. We handle delivery placement, leveling, water and electrical connections, and basic testing for many appliances.",
+  "appliance-maintenance": "Routine checks and cleaning help extend appliance life and catch small issues early. We offer maintenance visits focused on common wear points.",
+  "same-day-appliance-repair": "When an appliance fails at a bad time, priority scheduling can help. Contact us early in the day to ask about same-day availability in the Mooresville area.",
+};
+
+const intro = intros[service.slug] || service.shortDesc;
+
+const processSteps = [
+  { title: "Share the issue", desc: "Call or message us with the appliance type, brand if known, and the symptoms you're seeing." },
+  { title: "Schedule a visit", desc: "We'll find a convenient window and confirm arrival details." },
+  { title: "Diagnose on site", desc: "We inspect the unit, explain findings, and discuss repair options and approximate cost ranges." },
+  { title: "Complete the repair", desc: "With your approval we complete the work, test operation, and tidy the area." },
+];
+
+const faqs = [
+  {
+    q: `How much does ${service.name.toLowerCase()} typically cost?`,
+    a: "Repair costs vary based on the diagnosis, parts needed, and appliance age. We provide clear estimates after inspection so you can decide before work proceeds. Diagnostic fees may apply and are discussed upfront.",
+  },
+  {
+    q: "Do you work on all brands?",
+    a: "We service most major residential brands. If you have a less common or specialty unit, mention it when you call so we can confirm we can help.",
+  },
+  {
+    q: "How long does a typical repair take?",
+    a: "Many common repairs are completed in a single visit when parts are on hand. More complex jobs or ordered parts may require a follow-up. We'll keep you informed either way.",
+  },
+  {
+    q: "Is it better to repair or replace?",
+    a: "That depends on the appliance age, repair cost relative to replacement, and your preferences. We share the facts we find so you can make an informed choice.",
+  },
+];
+---
+
+<BaseLayout
+  title={`${service.name} in Mooresville NC | Appliance Repair`}
+  description={`${service.name} in Mooresville, NC and nearby areas. ${service.shortDesc} Call ${siteConfig.phoneDisplay} for friendly, professional service.`}
+>
+  <!-- Hero -->
+  <section class="bg-primary-700 text-white py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="text-sm text-primary-200 mb-4" aria-label="Breadcrumb">
+        <ol class="flex flex-wrap items-center gap-2">
+          <li><a href="/" class="hover:text-white">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="/services/" class="hover:text-white">Services</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-white" aria-current="page">{service.name}</li>
+        </ol>
+      </nav>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">{service.name} in Mooresville</h1>
+      <p class="text-lg text-primary-100 max-w-2xl">{service.shortDesc}</p>
+      <div class="mt-8">
+        <a href={`tel:${siteConfig.phone}`} class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary-700 font-bold rounded-lg hover:bg-primary-50">
+          Call {siteConfig.phoneDisplay}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="py-12 lg:py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Help With {service.name}</h2>
+      <p class="text-lg text-gray-700 leading-relaxed mb-6">{intro}</p>
+      <p class="text-gray-600 leading-relaxed">
+        Serving Mooresville, Huntersville, Davidson, Cornelius, and the broader Lake Norman area, we focus on clear communication and practical solutions. Whether the unit is under warranty considerations or simply aging, we explain what we find so you can decide the best path forward.
+      </p>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">How Service Works</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {processSteps.map((step, i) => (
+          <div class="bg-white p-6 rounded-xl border border-gray-100">
+            <div class="w-10 h-10 rounded-full bg-primary-100 text-primary-700 font-bold flex items-center justify-center mb-4">{i + 1}</div>
+            <h3 class="font-semibold text-gray-900 mb-2">{step.title}</h3>
+            <p class="text-sm text-gray-600">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Price range placeholder -->
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Pricing Expectations</h2>
+      <div class="bg-primary-50 border border-primary-100 rounded-xl p-6">
+        <p class="text-gray-700 leading-relaxed">
+          Repair costs for {service.name.toLowerCase()} typically fall in a range that depends on the specific diagnosis, parts required, and labor. Simple component replacements are usually more affordable than sealed-system or major board work. We provide an estimate after inspection and before any repair begins so there are no surprises. Diagnostic evaluation fees are discussed when you schedule.
+        </p>
+        <p class="text-sm text-gray-500 mt-4">For a clearer picture of your situation, give us a call or request a visit.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-8">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group bg-white border border-gray-200 rounded-lg">
+            <summary class="flex items-center justify-between cursor-pointer p-5 font-medium text-gray-900 list-none">
+              {faq.q}
+              <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-5 pb-5 text-gray-600 leading-relaxed">{faq.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-12 lg:py-16 bg-primary-700 text-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4">Schedule {service.name}</h2>
+      <p class="text-primary-100 mb-8">Call us or use the contact form. We'll help you get the appliance working again.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`tel:${siteConfig.phone}`} class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary-700 font-bold rounded-xl hover:bg-primary-50">
+          Call {siteConfig.phoneDisplay}
+        </a>
+        <a href="/contact/" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10">
+          Contact Form
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-xl font-bold text-gray-900 mb-6">Other Services</h2>
+      <div class="flex flex-wrap gap-3">
+        {services.filter(s => s.slug !== service.slug).slice(0, 8).map((s) => (
+          <a href={`/services/${s.slug}/`} class="px-4 py-2 bg-gray-100 hover:bg-primary-50 text-sm font-medium text-gray-700 hover:text-primary-700 rounded-full transition-colors">
+            {s.name}
+          </a>
+        ))}
+        <a href="/services/" class="px-4 py-2 text-sm font-medium text-primary-600 hover:underline">All services →</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

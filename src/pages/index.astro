@@ -1,0 +1,231 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig, services, areas } from "../data/site";
+---
+
+<BaseLayout
+  title="Appliance Repair Mooresville NC | Fast & Friendly Local Service"
+  description="Need appliance repair in Mooresville, NC? We fix refrigerators, washers, dryers, dishwashers, ovens, and more. Call (844) 605-0165 for reliable local service."
+>
+  <!-- Hero -->
+  <section class="relative bg-gradient-to-br from-primary-700 via-primary-600 to-primary-800 text-white overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,white,transparent_50%)]"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="max-w-3xl">
+        <p class="text-primary-200 font-medium mb-3 tracking-wide uppercase text-sm">Mooresville & Lake Norman Area</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+          Appliance Repair You Can Count On
+        </h1>
+        <p class="text-lg sm:text-xl text-primary-100 mb-8 leading-relaxed">
+          From refrigerators that won't cool to washers that won't spin — we bring skilled, friendly service right to your door in Mooresville, NC and nearby communities.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href={`tel:${siteConfig.phone}`}
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary-700 font-bold text-lg rounded-xl hover:bg-primary-50 transition-colors shadow-lg"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            Call {siteConfig.phoneDisplay}
+          </a>
+          <a
+            href="/contact/"
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/40 text-white font-semibold text-lg rounded-xl hover:bg-white/10 transition-colors"
+          >
+            Request Service
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust bar -->
+  <section class="bg-gray-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex flex-wrap justify-center gap-8 sm:gap-12 text-center text-sm text-gray-600">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary-600" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          <span>Local & Family-Friendly</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary-600" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          <span>Most Major Brands</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary-600" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          <span>Upfront Communication</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-primary-600" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          <span>Serving Lake Norman Area</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Overview -->
+  <section class="py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Appliance Repair Services</h2>
+        <p class="text-lg text-gray-600">
+          We handle a wide range of household and light-commercial appliances. Choose a service below or <a href="/contact/" class="text-primary-600 hover:underline">contact us</a> to describe your issue.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {services.slice(0, 12).map((service) => (
+          <a
+            href={`/services/${service.slug}/`}
+            class="group block p-6 bg-white border border-gray-200 rounded-xl hover:border-primary-300 hover:shadow-md transition-all"
+          >
+            <div class="w-12 h-12 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center mb-4 group-hover:bg-primary-100 transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 group-hover:text-primary-700 mb-2">{service.name}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">{service.shortDesc}</p>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a href="/services/" class="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700">
+          View all {services.length} services
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust / Why Us -->
+  <section class="py-16 lg:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Why Choose Local Appliance Repair?</h2>
+          <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+            When an appliance breaks, you need someone who shows up, explains the issue clearly, and gets the job done without unnecessary upselling. That's the approach we take for every visit in Mooresville and the surrounding area.
+          </p>
+          <ul class="space-y-4">
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center text-sm font-bold">1</span>
+              <div>
+                <strong class="text-gray-900">Clear communication</strong>
+                <p class="text-gray-600 text-sm mt-0.5">We explain what we find and what options you have before any work begins.</p>
+              </div>
+            </li>
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center text-sm font-bold">2</span>
+              <div>
+                <strong class="text-gray-900">Parts-aware service</strong>
+                <p class="text-gray-600 text-sm mt-0.5">We work with common parts for major brands and let you know about availability upfront.</p>
+              </div>
+            </li>
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center text-sm font-bold">3</span>
+              <div>
+                <strong class="text-gray-900">Respect for your home</strong>
+                <p class="text-gray-600 text-sm mt-0.5">We treat your space carefully and clean up after the repair is complete.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Ready for service?</h3>
+          <p class="text-gray-600 mb-6">Tell us what's going on with your appliance. We'll help you figure out next steps.</p>
+          <a
+            href={`tel:${siteConfig.phone}`}
+            class="block w-full text-center px-6 py-3.5 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors mb-3"
+          >
+            Call {siteConfig.phoneDisplay}
+          </a>
+          <a
+            href="/contact/"
+            class="block w-full text-center px-6 py-3.5 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
+          >
+            Send a message
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas teaser -->
+  <section class="py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Serving Mooresville & Nearby</h2>
+        <p class="text-lg text-gray-600">
+          Based in Mooresville, we regularly serve homes and businesses across the Lake Norman region.
+        </p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3">
+        {areas.map((area) => (
+          <a
+            href={`/areas/${area.slug}/`}
+            class="px-5 py-2.5 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-700 hover:border-primary-300 hover:text-primary-700 transition-colors"
+          >
+            {area.name}
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <a href="/service-areas/" class="text-primary-600 font-semibold hover:underline">View all service areas →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Simple reviews-style section (no fake stats) -->
+  <section class="py-16 lg:py-20 bg-primary-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What Local Customers Appreciate</h2>
+        <p class="text-lg text-gray-600">
+          Feedback from homeowners in the Mooresville area helps us keep improving. Here's the kind of experience we aim for on every visit.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <blockquote class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+          <p class="text-gray-700 leading-relaxed mb-4">"Showed up when promised, diagnosed the fridge issue clearly, and had it running again the same day. Straightforward and professional."</p>
+          <footer class="text-sm text-gray-500">— Homeowner in Mooresville</footer>
+        </blockquote>
+        <blockquote class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+          <p class="text-gray-700 leading-relaxed mb-4">"Our washer had been acting up for weeks. They explained the options, fixed it efficiently, and didn't push extra work we didn't need."</p>
+          <footer class="text-sm text-gray-500">— Resident near Lake Norman</footer>
+        </blockquote>
+        <blockquote class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+          <p class="text-gray-700 leading-relaxed mb-4">"Helpful from the first phone call through the repair. Good communication and careful work in our kitchen."</p>
+          <footer class="text-sm text-gray-500">— Customer in Huntersville</footer>
+        </blockquote>
+      </div>
+      <p class="text-center text-sm text-gray-500 mt-8">These comments reflect the type of service we strive to deliver. Individual experiences may vary.</p>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 lg:py-20 bg-primary-700 text-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">Need Help With an Appliance Today?</h2>
+      <p class="text-lg text-primary-100 mb-8">
+        Call us or send a quick message. We'll help you get back to a working kitchen and laundry room.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href={`tel:${siteConfig.phone}`}
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary-700 font-bold text-lg rounded-xl hover:bg-primary-50 transition-colors"
+        >
+          Call {siteConfig.phoneDisplay}
+        </a>
+        <a
+          href="/contact/"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/40 text-white font-semibold text-lg rounded-xl hover:bg-white/10 transition-colors"
+        >
+          Contact Form
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

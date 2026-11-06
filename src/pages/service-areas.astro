@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig, areas } from "../data/site";
+---
+
+<BaseLayout
+  title="Service Areas | Appliance Repair Mooresville NC"
+  description="We provide appliance repair throughout Mooresville, Huntersville, Davidson, Cornelius, Concord, Kannapolis, and the Lake Norman area. Call (844) 605-0165."
+>
+  <section class="bg-primary-700 text-white py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">Service Areas</h1>
+      <p class="text-lg text-primary-100 max-w-2xl">
+        Based in Mooresville, we regularly travel to nearby communities around Lake Norman and northern Mecklenburg and Cabarrus counties.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {areas.map((area) => (
+          <a
+            href={`/areas/${area.slug}/`}
+            class="block p-6 bg-white border border-gray-200 rounded-xl hover:border-primary-300 hover:shadow-md transition-all"
+          >
+            <h2 class="text-lg font-semibold text-gray-900 mb-2">{area.name}</h2>
+            <p class="text-sm text-gray-600">{area.shortDesc}</p>
+            <span class="inline-block mt-3 text-sm font-medium text-primary-600">Service details →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Outside these areas?</h2>
+      <p class="text-gray-600 mb-6">We sometimes travel a bit farther depending on schedule. Call to ask about your location.</p>
+      <a href={`tel:${siteConfig.phone}`} class="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700">
+        Call {siteConfig.phoneDisplay}
+      </a>
+    </div>
+  </section>
+</BaseLayout>
